@@ -1,0 +1,1 @@
+INSERT INTO events(id,mets, name ) VALUES(5,4, '腕立て');
