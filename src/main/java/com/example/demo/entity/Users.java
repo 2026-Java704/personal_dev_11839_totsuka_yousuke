@@ -14,15 +14,17 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private String passwordString;
+	private String password;
 	private Integer age;
 	private Integer gender;
 	private Integer weight;
 
-	public Users(Integer id, String name, String passwordString, Integer age, Integer gender, Integer weight) {
-		this.id = id;
+	public Users() {
+	}
+
+	public Users(String name, String password, Integer age, Integer gender, Integer weight) {
 		this.name = name;
-		this.passwordString = passwordString;
+		this.password = password;
 		this.age = age;
 		this.gender = gender;
 		this.weight = weight;
@@ -45,11 +47,11 @@ public class Users {
 	}
 
 	public String getPasswordString() {
-		return passwordString;
+		return password;
 	}
 
 	public void setPasswordString(String passwordString) {
-		this.passwordString = passwordString;
+		this.password = passwordString;
 	}
 
 	public Integer getAge() {
