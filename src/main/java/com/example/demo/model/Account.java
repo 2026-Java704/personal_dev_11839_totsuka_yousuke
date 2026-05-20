@@ -8,7 +8,6 @@ import org.springframework.web.context.annotation.SessionScope;
 public class Account {
 
 	private String name;
-	private String password;
 
 	public String getName() {
 		return name;
@@ -17,13 +16,4 @@ public class Account {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 }

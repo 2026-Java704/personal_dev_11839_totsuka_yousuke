@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "exercise_records")
-public class exercise_records {
+public class Records {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,23 +24,18 @@ public class exercise_records {
 	private Integer time;
 	@Column(name = "burn_calorie")
 	private Integer burnCalorie;
+	private Integer weight;
 
-	public exercise_records(Integer id, Integer userId, Integer eventId, Date date, Integer time, Integer burnCalorie) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.eventId = eventId;
+	//	外部キーは後で
+
+	public Records(Date date, Integer time, Integer weight) {
 		this.date = date;
 		this.time = time;
-		this.burnCalorie = burnCalorie;
+		this.weight = weight;
+		this.eventId = eventId;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public Records() {
 	}
 
 	public Integer getUserId() {
@@ -81,6 +76,14 @@ public class exercise_records {
 
 	public void setBurnCalorie(Integer burnCalorie) {
 		this.burnCalorie = burnCalorie;
+	}
+
+	public Integer getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Integer weight) {
+		this.weight = weight;
 	}
 
 }

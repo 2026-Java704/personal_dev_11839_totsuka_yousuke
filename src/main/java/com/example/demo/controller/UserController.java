@@ -30,7 +30,7 @@ public class UserController {
 	}
 
 	//ログイン画面
-	@GetMapping({ "/", "/login" })
+	@GetMapping({ "/", "/login", "/logout" })
 	public String index() {
 		session.invalidate();
 		return "login";
@@ -44,6 +44,7 @@ public class UserController {
 		// 名前が空の場合にエラーとする
 		if (name.length() == 0 || password.length() == 0) {
 			model.addAttribute("message", "ログイン情報を入力してください");
+			return "login";
 		}
 		//入力必須
 		List<Users> userList = usersRepository.findByNameAndPassword(name, password);
@@ -51,7 +52,10 @@ public class UserController {
 			model.addAttribute("message", "一致しないよ");
 			return "login";
 		}
-		return "addLog";
+
+		account.setName(name);
+
+		return "redirect:/records/add";
 	}
 
 	//新規登録

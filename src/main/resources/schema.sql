@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS exercise_records;
+
 -- ユーザーテーブル
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -5,7 +9,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     age INTEGER,
     gender INTEGER,
-    weight INTEGER
 );
 
 -- 運動種目テーブル
@@ -26,6 +29,7 @@ CREATE TABLE exercise_records (
     time INTEGER NOT NULL,
     burn_calorie INTEGER NOT NULL,
     memo TEXT,
+    weight INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (event_id) REFERENCES events(id)
 );

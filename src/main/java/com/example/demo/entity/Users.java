@@ -17,7 +17,6 @@ public class Users {
 	private String password;
 	private Integer age;
 	private Integer gender;
-	private Integer weight;
 
 	public Users() {
 	}
@@ -27,7 +26,6 @@ public class Users {
 		this.password = password;
 		this.age = age;
 		this.gender = gender;
-		this.weight = weight;
 	}
 
 	public Integer getId() {
@@ -68,14 +66,6 @@ public class Users {
 
 	public void setGender(Integer gender) {
 		this.gender = gender;
-	}
-
-	public Integer getWeight() {
-		return weight;
-	}
-
-	public void setWeight(Integer weight) {
-		this.weight = weight;
 	}
 
 }
