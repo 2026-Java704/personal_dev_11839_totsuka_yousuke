@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>記録入力ページ</title>
+	<meta charset="UTF-8">
+	<title>記録入力ページ</title>
+	
+	<link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-	<header>
-		<h1>ダイエットアプリ</h1>
-	</header>
+	<header th:replace="~{header}"></header>
+	<hr>
 
 	<main>
 		<hr>
 		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
-		<form action="/logout" method="post">
-			<button type="submit">ログアウト</button>
-		</form>
+
 		<form action="/records/add" method="post">
 			<table border="1">
 				<tr>
@@ -39,6 +40,9 @@
 			<button>ENTER!!!</button>
 		</form>
 		<p><a href="/past">過去の記録を見る</a></p>
+		<p><a href="/bmr">基礎代謝を計算する</a></p>
+
 	</main>
 </body>
+
 </html>

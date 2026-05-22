@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>基礎代謝の計算結果</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="~{header}"></header>
+	<hr>
+
+	<h1>基礎代謝の計算結果</h1>
+
+	<span th:text="${@account.name} + ' さんの基礎代謝は' + ${bmr} +'カロリーです'"></span><br>
+
+	<p><a href="/records/add">記録入力に戻る</a></p>
+
+
+</body>
+
+</html>

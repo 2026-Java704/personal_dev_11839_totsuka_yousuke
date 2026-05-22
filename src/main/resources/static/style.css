@@ -1,20 +1,17 @@
 /* 全体 */
 body {
-	background-color: #EFF0F7; /* 背景色  */
+	background-color: rgb(255, 255, 128); /* 背景色  */
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
-	background-color: #45496a; /* 背景色 */
-	color: #ffffff; /* 文字色 */
+header{
+	background-color: rgb(0, 0, 0); /* 背景色 */
+	color: rgb(255, 255, 0); /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
 }
-/* ヘッダー、ナビゲーション内リンク */
-header a, nav a {
-	color: #ffffff;
-}
+
 /* ヘッダー内見出し */
 header h1 {
 	font-size: 20pt;
@@ -22,18 +19,18 @@ header h1 {
 }
 /* 仕切り線 */
 hr {
-	border-top: 2px dashed #7d8bae;
+	border-top: 2px dashed rgb(255, 128, 0);
 }
 /* メイン */
-main {
-	background-color: #FFFFFF;
-	min-height: 50px;
-	padding: 20px;
-}
-/* 表線 */
+/*main {*/
+/*	background-color: #FFFFFF;*/
+/*	min-height: 50px;*/
+/*	padding: 20px;*/
+/*}*/
+ 表線 
 table, th, td {
 	border-collapse: collapse;
-	border: 1px solid #7d8bae;
+	border: 1px solid rgb(0, 0, 0);
 }
 /* 表 */
 table {
@@ -42,14 +39,14 @@ table {
 }
 /* 表見出しセル */
 table th {
-	background: #7d8bae;
-	color: #ffffff;
+	background: rgb(0, 0, 0);
+	color: rgb(255, 255, 0);
 }
 /* 送信ボタン */
 button {
 	margin: 2px;
 	padding: 5px 20px;
-	background-color: #e5857b;
+	background-color: rgb(255, 0, 0);
 	color: #ffffff;
 	border: none;
 	width:150px;
@@ -57,5 +54,5 @@ button {
 }
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
-	background-color: #f1b2b2;
+	background-color: rgb(241, 178, 178);
 }

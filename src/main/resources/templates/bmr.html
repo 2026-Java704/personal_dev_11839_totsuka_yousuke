@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>基礎代謝計算</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="~{header}"></header>
+	<hr>
+
+	<h1>基礎代謝の計算</h1>
+
+	<form action="/bmr/result" method="post">
+		<table border="1">
+			<tr>
+				<th>性別</th>
+				<th>体重 </th>
+				<th>身長 </th>
+				<th>年齢 </th>
+			</tr>
+			<tr>
+				<td><input type="radio" name="sex" value="m" checked>男性
+					<input type="radio" name="sex" value="ｆ" checked>女性
+				</td>
+				<td><input type="number" name="weight" placeholder="体重">kg</td>
+				<td><input type="number" name="height" placeholder="身長">cm</td>
+				<td><input type="number" name="age" placeholder="年齢">歳</td>
+			</tr>
+		</table>
+		<button>計算</button>
+	</form>
+
+
+
+</body>
+
+</html>

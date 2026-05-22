@@ -4,12 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>過去の記録</title>
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-	<header>
-		<h1>ダイエットアプリ</h1>
-	</header>
+	<header th:replace="~{header}"></header>
+	<hr>
 
 	<main>
 		<hr>
@@ -35,15 +35,19 @@
 				<td th:text="${record.weight + ' kg'}"></td>
 				<td th:text="${'約 ' + record.burnCalorie + ' カロリー'}"></td>
 				<td th:text="${record.memo.trim()}"></td>
-				<form>
-				<td th;text="">更新</td>
-				</form>
+				<td>
+					<form th:action="@{/past/{pastId}/edit(pastId=${record.id})}" method="get">
+						<button>更新</button>
+					</form>
+				</td>
 			</tr>
 		</table>
+		
+		
+		
+		
 		<p><a href="/records/add">入力画面へ戻る</a></p>
-		<form action="/logout" method="post">
-			<button type="submit">ログアウト</button>
-		</form>
+
 	</main>
 </body>
 

@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>カロリー出力</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<header>
-		<h1>ダイエットアプリ</h1>
-	</header>
+		<header th:replace="~{header}"></header>
+		<hr>
 
 	<main>
 		<hr>
@@ -28,9 +28,7 @@
 		</table>
 		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'カロリーです！'"></p>
 		<p><a href="/past">過去の記録を見る</a></p>
-		<form action="/logout" method="post">
-			<button type="submit">ログアウト</button>
-		</form>
+		
 	</main>
 </body>
 </html>

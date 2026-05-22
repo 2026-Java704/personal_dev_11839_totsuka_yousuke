@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -99,24 +100,72 @@ public class TaskController {
 		return "past";
 	}
 
-	//	//	更新処理
-	//	@PostMapping("/past{id}/edit")
-	//	public String update(
-	//			@PathVariable Integer id,
-	//			@RequestParam (defaultValue = "") Integer eventId, 
-	//			@RequestParam (defaultValue = "") Integer time,
-	//			@RequestParam (defaultValue = "") Double weight
-	//			) {
-	////		id検索
-	//		Events events = eventsRepository.findById(id).get();
-	//		events.setEventId;
-	//		events.setTime;
-	//		events.setWeight;
-	//		
-	//		
-	//	eventsRepository.save(events);
-	//	
-	//		return "redirect:/past";
-	//	}
+	//	更新処理
+	@GetMapping("/past/{id}/edit")
+	public String edit(@PathVariable Integer id, Model model) {
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
 
+		List<Events> events = eventsRepository.findByUserIdOrderByIdAsc(account.getId());
+
+		model.addAttribute("events", events);
+
+		Exercise_records exercise_records = exerciseRecordsRepository.findById(id).get();
+		model.addAttribute("exercise_records", exercise_records);
+		model.addAttribute("recordId", id);
+
+		return "pastEdit";
+	}
+
+	@PostMapping("/past/{id}/edit")
+	public String update(
+			@PathVariable Integer id,
+			@RequestParam(defaultValue = "") Integer eventId,
+			@RequestParam(defaultValue = "") LocalDate date,
+			@RequestParam(defaultValue = "") Integer time,
+			@RequestParam(defaultValue = "") Double weight) {
+		//		id検索
+		Exercise_records exercise_records = exerciseRecordsRepository.findById(id).get();
+		Events events = eventsRepository.findById(eventId).get();
+
+		double burnCalorie = events.getMets() * weight * (time / 60.0) * 1.05;
+		double roundedCalorie = Math.round(burnCalorie * 10.0) / 10.0;
+
+		exercise_records.setEventId(eventId);
+		exercise_records.setDate(date);
+		exercise_records.setTime(time);
+		exercise_records.setWeight(weight);
+		exercise_records.setBurnCalorie(roundedCalorie);
+
+		eventsRepository.save(exercise_records);
+
+		return "redirect:/past";
+	}
+
+	//	基礎代謝計算機能
+	@GetMapping("/bmr")
+	public String bmrindex() {
+		return "bmr";
+	}
+
+	@PostMapping("/bmr/result")
+	public String bmr(
+			@RequestParam String sex,
+			@RequestParam double weight,
+			@RequestParam double height,
+			@RequestParam Integer age,
+			Model model) {
+
+		double bmr;
+		if (sex.equals("m")) {
+			bmr = 13.397 * weight + 4.79 * height - 5.677 * age + 88.362;
+
+		} else {
+			bmr = 9.247 * weight + 3.098 * height - 4.33 * age + 447.593;
+		}
+		model.addAttribute("bmr", bmr);
+
+		return "bmrResult";
+	}
 }

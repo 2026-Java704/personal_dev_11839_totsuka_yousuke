@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>記録更新処理</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+	<header th:replace="~{header}"></header>
+	<hr>
+
+	<form th:action="@{/past/{pastId}/edit(pastId=${recordId})}" method="post">
+		<table border="1">
+			<tr>
+				<th>日付</th>
+				<td><input type="date" name="date" th:value="${exercise_records.date}" required></td>
+			</tr>
+			<tr>
+				<th>種目</th>
+				<td>
+					<select name="eventId" required>
+						<option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"
+							th:selected="${event.id == exercise_records.eventId}">
+						</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>時間</th>
+				<td><input type="number" name="time" min="1" th:value="${exercise_records.time}" required> 分</td>
+			</tr>
+			<tr>
+				<th>体重</th>
+				<td><input type="number" name="weight" min="1" step="0.1" th:value="${exercise_records.weight}"
+						required> kg</td>
+			</tr>
+
+			<tr>
+				<th>消費カロリー</th>
+				<td><input type="text" th:value="${exercise_records.burnCalorie}" readonly> kcal</td>
+			</tr>
+		</table>
+		<br>
+		<button>更新</button>
+	</form>
+
+
+</body>
+
+</html>
