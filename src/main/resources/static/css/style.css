@@ -1,13 +1,13 @@
 /* 全体 */
 body {
-	background-color: rgb(255, 255, 128); /* 背景色  */
+	background-color: rgb(255, 255, 255); /* 背景色  */
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header{
-	background-color: rgb(0, 0, 0); /* 背景色 */
-	color: rgb(255, 255, 0); /* 文字色 */
+header,footer{
+	background-color: rgb(255, 0, 0); /* 背景色 */
+	color: rgb(255, 255, 255); /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
 }
@@ -19,7 +19,7 @@ header h1 {
 }
 /* 仕切り線 */
 hr {
-	border-top: 2px dashed rgb(255, 128, 0);
+	border-top: 2px dashed rgb(64, 0, 128);
 }
 /* メイン */
 /*main {*/
@@ -34,13 +34,15 @@ table, th, td {
 }
 /* 表 */
 table {
-    margin: 5px auto;
-    min-width: 800px;
+    margin: 15px auto;
+	
+    min-width: 1000px;
+	
 }
 /* 表見出しセル */
 table th {
-	background: rgb(0, 0, 0);
-	color: rgb(255, 255, 0);
+	background: rgb(255, 0, 0);
+	color: rgb(255, 255, 255);
 }
 /* 送信ボタン */
 button {
