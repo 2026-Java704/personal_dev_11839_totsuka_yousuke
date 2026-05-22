@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>記録入力ページ</title>
-	
+
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -36,6 +36,29 @@
 					<td><input type="number" name="weight" min="1" step="0.1" required> kg</td>
 					<td><input type="text" name="memo.trim()"></td>
 				</tr>
+				<tr>
+					<td> </td>
+					<td>
+						<select name="eventId">
+							<option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"></option>
+						</select>
+					</td>
+					<td><input type="number" name="time" min="1" required> 分</td>
+					<td><input type="number" name="weight" min="1" step="0.1" required> kg</td>
+					<td><input type="text" name="memo.trim()"></td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td>
+						<select name="eventId">
+							<option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"></option>
+						</select>
+					</td>
+					<td><input type="number" name="time" min="1" required> 分</td>
+					<td><input type="number" name="weight" min="1" step="0.1" required> kg</td>
+					<td><input type="text" name="memo.trim()"></td>
+				</tr>
+
 			</table>
 			<button>ENTER!!!</button>
 		</form>
