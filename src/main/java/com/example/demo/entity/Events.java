@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "events")
-public class events {
+public class Events {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +19,11 @@ public class events {
 	private String name;
 	private double mets;
 
-	//	↑不安
-	public events(Integer id, Integer userId, String name, double mets) {
+	public Events() {
+	}
 
+	//	↑不安
+	public Events(Integer id, Integer userId, String name, double mets) {
 		this.id = id;
 		this.userId = userId;
 		this.name = name;

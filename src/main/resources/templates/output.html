@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>カロリー出力</title>
+</head>
+<body>
+	<header>
+		<h1>ダイエットアプリ</h1>
+	</header>
+
+	<main>
+		<hr>
+		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
+		<table border="1">
+			<tr>
+				<th>日付</th>
+				<th>種目</th>
+				<th>時間</th>
+				<th>体重</th>
+			</tr>
+			<tr>
+				<td th:text="${record.date}"></td>
+				<td th:text="${eventName}"></td>
+				<td th:text="${record.time + ' 分'}"></td>
+				<td th:text="${record.weight + ' kg'}"></td>
+			</tr>
+		</table>
+		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'カロリーです！'"></p>
+		<p><a href="/past">過去の記録を見る</a></p>
+		<form action="/logout" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+	</main>
+</body>
+</html>

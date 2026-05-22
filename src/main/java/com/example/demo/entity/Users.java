@@ -9,23 +9,21 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class Users {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
-	private String password;
-	private Integer age;
-	private Integer gender;
 
+	private String name;
+
+	private String password;
+
+	// コンストラクタ
 	public Users() {
 	}
 
-	public Users(String name, String password, Integer age, Integer gender, Integer weight) {
+	public Users(String name, String password) {
 		this.name = name;
 		this.password = password;
-		this.age = age;
-		this.gender = gender;
 	}
 
 	public Integer getId() {
@@ -44,28 +42,12 @@ public class Users {
 		this.name = name;
 	}
 
-	public String getPasswordString() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPasswordString(String passwordString) {
-		this.password = passwordString;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	public Integer getGender() {
-		return gender;
-	}
-
-	public void setGender(Integer gender) {
-		this.gender = gender;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
