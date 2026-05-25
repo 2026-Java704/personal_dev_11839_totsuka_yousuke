@@ -42,6 +42,12 @@
 				<th>消費カロリー</th>
 				<td><input type="text" th:value="${exercise_records.burnCalorie}" readonly> kcal</td>
 			</tr>
+			<tr>
+				<th>memo</th>
+				<td><input type="text" name="memo" th:value="${exercise_records.memo}"
+						required> </td>
+			</tr>
+
 		</table>
 		<br>
 		<button>更新</button>

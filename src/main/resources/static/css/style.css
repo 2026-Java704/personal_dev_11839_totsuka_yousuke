@@ -1,59 +1,102 @@
 /* 全体 */
 body {
-	background-color: rgb(255, 255, 255); /* 背景色  */
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	background-color: rgb(255, 255, 255);
+	/* 背景色  */
+	text-align: center;
+	/* 中央寄せ */
+
+	/* 最小幅 */
 }
+
+/*.bg_pattern {*/
+/*  position: fixed;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100vw;*/
+/*  height: 100vh;*/
+/*  background-color: #ffe9a7;*/
+/*  opacity: 0.4;*/
+/*  z-index: -1;*/
+/*}*/
+/*.Circles {*/
+/*  background-image: radial-gradient(circle at center center, rgb(255, 0, 128), rgb(255, 255, 255)), repeating-radial-gradient(circle at center center, #ffc107, #ffc107, 20px, transparent 40px, transparent 20px);*/
+/*  background-blend-mode: multiply;*/
+/*}*/
+
+div {
+	border: inset 5px;
+	border-color: rgb(192, 192, 192);
+	min-width: 90px;
+}
+
+
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header,footer{
-	background-color: rgb(255, 0, 0); /* 背景色 */
-	color: rgb(255, 255, 255); /* 文字色 */
-	padding-top: 5px; /* 内側余白(上) */
-	padding-bottom: 5px; /* 内側余白(下) */
+header,
+footer {
+	background-color: rgb(255, 0, 0);
+	/* 背景色 */
+	color: rgb(255, 255, 255);
+	/* 文字色 */
+	padding-top: 5px;
+	/* 内側余白(上) */
+	padding-bottom: 5px;
+	/* 内側余白(下) */
 }
 
 /* ヘッダー内見出し */
 header h1 {
-	font-size: 20pt;
+	content: 1F30B;
+	font-size: 40pt;
 	margin: 10px auto;
+
+	a {
+		color: rgb(255, 255, 255);
+		text-decoration: none;
+	}
 }
+
 /* 仕切り線 */
 hr {
-	border-top: 2px dashed rgb(64, 0, 128);
+	border-top: 8px double rgb(0, 0, 0);
 }
-/* メイン */
-/*main {*/
-/*	background-color: #FFFFFF;*/
-/*	min-height: 50px;*/
-/*	padding: 20px;*/
-/*}*/
- 表線 
-table, th, td {
+
+表線 table,
+th,
+td {
 	border-collapse: collapse;
 	border: 1px solid rgb(0, 0, 0);
 }
+
 /* 表 */
 table {
-    margin: 15px auto;
-	
-    min-width: 1000px;
-	
+	margin: 15px auto;
+	min-width: 1000px;
+	min-height: 100px;
+
 }
+
+
 /* 表見出しセル */
 table th {
 	background: rgb(255, 0, 0);
 	color: rgb(255, 255, 255);
 }
+
+
+
+
 /* 送信ボタン */
 button {
+
 	margin: 2px;
-	padding: 5px 20px;
+	padding: 10px 20px;
 	background-color: rgb(255, 0, 0);
 	color: #ffffff;
 	border: none;
-	width:150px;
+	width: 150px;
 	cursor: pointer;
 }
+
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
 	background-color: rgb(241, 178, 178);

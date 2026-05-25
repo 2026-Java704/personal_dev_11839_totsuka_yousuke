@@ -124,7 +124,8 @@ public class TaskController {
 			@RequestParam(defaultValue = "") Integer eventId,
 			@RequestParam(defaultValue = "") LocalDate date,
 			@RequestParam(defaultValue = "") Integer time,
-			@RequestParam(defaultValue = "") Double weight) {
+			@RequestParam(defaultValue = "") Double weight,
+			@RequestParam(defaultValue = "") String memo) {
 		//		id検索
 		Exercise_records exercise_records = exerciseRecordsRepository.findById(id).get();
 		Events events = eventsRepository.findById(eventId).get();
@@ -137,6 +138,7 @@ public class TaskController {
 		exercise_records.setTime(time);
 		exercise_records.setWeight(weight);
 		exercise_records.setBurnCalorie(roundedCalorie);
+		exercise_records.setMemo(memo);
 
 		eventsRepository.save(exercise_records);
 
@@ -152,8 +154,8 @@ public class TaskController {
 	@PostMapping("/bmr/result")
 	public String bmr(
 			@RequestParam String sex,
-			@RequestParam double weight,
-			@RequestParam double height,
+			@RequestParam Double weight,
+			@RequestParam Double height,
 			@RequestParam Integer age,
 			Model model) {
 
@@ -165,6 +167,12 @@ public class TaskController {
 			bmr = 9.247 * weight + 3.098 * height - 4.33 * age + 447.593;
 		}
 		model.addAttribute("bmr", bmr);
+
+		if (sex == null || weight == null || height == null || age == null) {
+			model.addAttribute("message", "種目を選択してください");
+			return "bmr";
+
+		}
 
 		return "bmrResult";
 	}

@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>カロリー出力</title>
-<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>カロリー出力</title>
+	<link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-		<header th:replace="~{header}"></header>
-		<hr>
+	<header th:replace="~{header}"></header>
+	<hr>
 
 	<main>
-		<hr>
+		
 		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
+
+		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'カロリーです！'"></p>
 		<table border="1">
 			<tr>
 				<th>日付</th>
 				<th>種目</th>
 				<th>時間</th>
 				<th>体重</th>
+				<th>memo</th>
 			</tr>
 			<tr>
 				<td th:text="${record.date}"></td>
 				<td th:text="${eventName}"></td>
 				<td th:text="${record.time + ' 分'}"></td>
 				<td th:text="${record.weight + ' kg'}"></td>
+				<td th:text="${record.memo}"></td>
 			</tr>
 		</table>
-		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'カロリーです！'"></p>
+
 		<p><a href="/past">過去の記録を見る</a></p>
-		
+
 	</main>
 </body>
+
 </html>
