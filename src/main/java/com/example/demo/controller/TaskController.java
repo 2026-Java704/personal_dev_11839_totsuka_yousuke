@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -42,46 +43,100 @@ public class TaskController {
 	}
 
 	//記録画面
+	//	@PostMapping("/records/add")
+	//	public String enter(
+	//			@RequestParam List<LocalDate> date,
+	//			@RequestParam List<Integer> eventId,
+	//			@RequestParam List<Integer> time,
+	//			@RequestParam List<Double> weight,
+	//			@RequestParam(required = false, defaultValue = "") List<String> memo, Model model) {
+	//		if (account.getId() == null) {
+	//			return "redirect:/login";
+	//		}
+	//
+	//		List<Events> eventsList = eventsRepository.findByUserIdOrderByIdAsc(account.getId());
+	//		Events event = null;
+	//		for (int i = 0; i < eventsList.size(); i++) {
+	//			Events oneEvent = eventsList.get(i);
+	//			if (oneEvent.getId().equals(eventId)) {
+	//				event = oneEvent;
+	//			}
+	//		}
+	//
+	//		if (date == null || time == null || weight == null || event == null) {
+	//			model.addAttribute("message", "種目を選択してください");
+	//			model.addAttribute("events", eventsList);
+	//			return "records";
+	//		}
+	//		
+	//		// 種目取得
+	//				Events event = eventsRepository.findById(eventId.get(i)).orElse(null);
+	//
+	//				if (event == null) {
+	//					continue;
+	//				}
+	//		
+	//		//計算式
+	//		double burnCalorie = event.getMets() * weight.get(i) * (time.get(i) / 60.0) * 1.05;
+	//		Exercise_records record = new Exercise_records(
+	//				account.getId(),
+	//				eventId.get(i),
+	//				date.get(i),
+	//				time.get(i),
+	//				weight.get(i),
+	//				Math.round(burnCalorie * 10.0) / 10.0,
+	//				2,
+	//				memo.get(i));
+	//		exerciseRecordsRepository.save(record);
+	//
+	//		model.addAttribute("record", record);
+	//		model.addAttribute("eventName", event.getName());
+	//		return "output";
+	//	}
+
 	@PostMapping("/records/add")
 	public String enter(
-			@RequestParam LocalDate date,
-			@RequestParam Integer eventId,
-			@RequestParam Integer time,
-			@RequestParam Double weight,
-			@RequestParam(required = false, defaultValue = "") String memo, Model model) {
-		if (account.getId() == null) {
-			return "redirect:/login";
-		}
+			@RequestParam List<LocalDate> date,
+			@RequestParam List<Integer> eventId,
+			@RequestParam List<Integer> time,
+			@RequestParam List<Double> weight,
+			@RequestParam(required = false) List<String> memo,
+			Model model) {
 
-		List<Events> eventsList = eventsRepository.findByUserIdOrderByIdAsc(account.getId());
-		Events event = null;
-		for (int i = 0; i < eventsList.size(); i++) {
-			Events oneEvent = eventsList.get(i);
-			if (oneEvent.getId().equals(eventId)) {
-				event = oneEvent;
+		List<Exercise_records> records = new ArrayList<>();
+
+		double totalBurnCalorie = 0;
+		for (int i = 0; i < date.size(); i++) {
+
+			// 種目取得
+			Events event = eventsRepository.findById(eventId.get(i)).orElse(null);
+
+			if (event == null) {
+				continue;
 			}
-		}
 
-		if (date == null || time == null || weight == null || event == null) {
-			model.addAttribute("message", "種目を選択してください");
-			model.addAttribute("events", eventsList);
-			return "records";
-		}
-		//計算式
-		double burnCalorie = event.getMets() * weight * (time / 60.0) * 1.05;
-		Exercise_records record = new Exercise_records(
-				account.getId(),
-				eventId,
-				date,
-				time,
-				weight,
-				Math.round(burnCalorie * 10.0) / 10.0,
-				2,
-				memo.trim());
-		exerciseRecordsRepository.save(record);
+			double burnCalorie = event.getMets() * weight.get(i) * (time.get(i) / 60.0) * 1.05;
 
-		model.addAttribute("record", record);
-		model.addAttribute("eventName", event.getName());
+			totalBurnCalorie += burnCalorie;
+			Exercise_records record = new Exercise_records(
+					account.getId(),
+					eventId.get(i),
+					date.get(i),
+					time.get(i),
+					weight.get(i),
+					Math.round(burnCalorie * 10.0) / 10.0,
+					2,
+					memo.get(i));
+
+			exerciseRecordsRepository.save(record);
+
+			records.add(record);
+		}
+		model.addAttribute("totalBurnCalorie",
+				Math.round(totalBurnCalorie * 10.0) / 10.0);
+
+		model.addAttribute("records", records);
+
 		return "output";
 	}
 

@@ -6,22 +6,23 @@
 	<title>記録入力ページ</title>
 
 	<link rel="stylesheet" href="/css/style.css">
+	<script th:src="@{/script/js.js}"></script>
 </head>
 
 <body>
-
-
 	<header th:replace="~{header}"></header>
-
-
 	<hr>
 
 	<main>
-
 		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
-
+		
+			
+		
 		<form action="/records/add" method="post">
+
+
 			<table id="tbl" border="1">
+				<!--			<table border="1">-->
 				<tr>
 					<th>日付</th>
 					<th>種目</th>
@@ -43,6 +44,8 @@
 					<td><input type="text" name="memo"></td>
 				</tr>
 			</table>
+			<button onclick="add()">行追加</button>
+						<button onclick="del()">行削除</button>
 			<button>ENTER!!!</button>
 
 		</form>
@@ -52,9 +55,6 @@
 		<p><a href="/bmr">基礎代謝を計算する</a></p>
 
 	</main>
-	<hr>
-	<footer th:replace="~{footer}"></footer>
-
 </body>
 
 </html>

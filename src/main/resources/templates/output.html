@@ -12,10 +12,10 @@
 	<hr>
 
 	<main>
-		
+
 		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
 
-		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'カロリーです！'"></p>
+		<p th:text="${@account.name} + 'さんの総消費カロリーは、約' + ${totalBurnCalorie} + 'カロリーです！'"></p>
 		<table border="1">
 			<tr>
 				<th>日付</th>
@@ -24,11 +24,11 @@
 				<th>体重</th>
 				<th>memo</th>
 			</tr>
-			<tr>
+			<tr th:each="record : ${records}">
 				<td th:text="${record.date}"></td>
-				<td th:text="${eventName}"></td>
 				<td th:text="${record.time + ' 分'}"></td>
 				<td th:text="${record.weight + ' kg'}"></td>
+				<td th:text="${record.burnCalorie + ' kcal'}"></td>
 				<td th:text="${record.memo}"></td>
 			</tr>
 		</table>

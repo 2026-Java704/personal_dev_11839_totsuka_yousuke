@@ -8,40 +8,40 @@ body {
 	/* 最小幅 */
 }
 
-/*.bg_pattern {*/
-/*  position: fixed;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  width: 100vw;*/
-/*  height: 100vh;*/
-/*  background-color: #ffe9a7;*/
-/*  opacity: 0.4;*/
-/*  z-index: -1;*/
-/*}*/
-/*.Circles {*/
-/*  background-image: radial-gradient(circle at center center, rgb(255, 0, 128), rgb(255, 255, 255)), repeating-radial-gradient(circle at center center, #ffc107, #ffc107, 20px, transparent 40px, transparent 20px);*/
-/*  background-blend-mode: multiply;*/
-/*}*/
-
 div {
-	border: inset 5px;
-	border-color: rgb(192, 192, 192);
-	min-width: 90px;
+	border: solid 5px;
+	border-color: rgb(255, 128, 128);
+	min-width: 1%;
 }
-
 
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header,
 footer {
-	background-color: rgb(255, 0, 0);
-	/* 背景色 */
-	color: rgb(255, 255, 255);
-	/* 文字色 */
-	padding-top: 5px;
-	/* 内側余白(上) */
-	padding-bottom: 5px;
-	/* 内側余白(下) */
+	font-size: 30px;
+	font-weight: 900;
+	background: linear-gradient(90deg,
+			rgb(255, 0, 0), rgb(255, 128, 0), #f64f59, rgb(255, 255, 255));
+	background-size: 300% 100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	animation: gradientMove 6s ease infinite;
 }
+
+@keyframes gradientMove {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 
 /* ヘッダー内見出し */
 header h1 {
@@ -57,7 +57,7 @@ header h1 {
 
 /* 仕切り線 */
 hr {
-	border-top: 8px double rgb(0, 0, 0);
+	border-top: 8px dashed rgb(255, 128, 128);
 }
 
 表線 table,
@@ -83,7 +83,11 @@ table th {
 }
 
 
-
+header button.btn {
+	background-color: red;
+	color: white;
+	margin-right:auto;
+}
 
 /* 送信ボタン */
 button {
@@ -96,6 +100,7 @@ button {
 	width: 150px;
 	cursor: pointer;
 }
+
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
