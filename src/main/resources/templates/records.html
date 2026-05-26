@@ -15,9 +15,11 @@
 
 	<main>
 		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
-		
-			
-		
+
+
+		<button onclick="add()">行追加</button>
+		<button onclick="del()">行削除</button>
+
 		<form action="/records/add" method="post">
 
 
@@ -44,8 +46,7 @@
 					<td><input type="text" name="memo"></td>
 				</tr>
 			</table>
-			<button onclick="add()">行追加</button>
-						<button onclick="del()">行削除</button>
+
 			<button>ENTER!!!</button>
 
 		</form>

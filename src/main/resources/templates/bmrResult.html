@@ -11,9 +11,9 @@
 	<header th:replace="~{header}"></header>
 	<hr>
 
-	<h1>基礎代謝の計算結果</h1>
+	<h3>基礎代謝の計算結果</h3>
 
-	<span th:text="${@account.name} + ' さんの基礎代謝は' + ${bmr} +'カロリーです'"></span><br>
+	<h1><span th:text="${@account.name} + ' さんの基礎代謝は' + ${bmr} +'カロリーです'"></span></h1><br>
 
 	<p><a href="/records/add">記録入力に戻る</a></p>
 

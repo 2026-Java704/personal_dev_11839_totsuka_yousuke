@@ -10,7 +10,7 @@ body {
 
 div {
 	border: solid 5px;
-	border-color: rgb(255, 128, 128);
+	border-color: rgb(255, 96, 0);
 	min-width: 1%;
 }
 
@@ -19,13 +19,14 @@ header,
 footer {
 	font-size: 30px;
 	font-weight: 900;
+	background-color:red;
 	background: linear-gradient(90deg,
-			rgb(255, 0, 0), rgb(255, 128, 0), #f64f59, rgb(255, 255, 255));
+			rgb(255, 0, 0), rgb(255, 0, 128),  rgb(0, 0, 255));
 	background-size: 300% 100%;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	animation: gradientMove 6s ease infinite;
+	animation: gradientMove 5s ease infinite;
 }
 
 @keyframes gradientMove {
@@ -57,7 +58,7 @@ header h1 {
 
 /* 仕切り線 */
 hr {
-	border-top: 8px dashed rgb(255, 128, 128);
+	border-top: 8px dashed rgb(255, 96, 0);
 }
 
 表線 table,
