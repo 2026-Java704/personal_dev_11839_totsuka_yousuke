@@ -33,7 +33,7 @@
 				</td>
 				<td th:text="${record.time + ' 分'}"></td>
 				<td th:text="${record.weight + ' kg'}"></td>
-				<td th:text="${'約 ' + record.burnCalorie + ' カロリー'}"></td>
+				<td th:text="${'約 ' + record.burnCalorie + ' キロカロリー'}"></td>
 				<td th:text="${record.memo}"></td>
 				<td>
 					<form th:action="@{/past/{pastId}/edit(pastId=${record.id})}" method="get">

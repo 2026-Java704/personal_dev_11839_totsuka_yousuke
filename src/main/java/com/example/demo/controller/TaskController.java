@@ -100,7 +100,7 @@ public class TaskController {
 			@RequestParam List<Integer> eventId,
 			@RequestParam List<Integer> time,
 			@RequestParam List<Double> weight,
-			@RequestParam(required = false) List<String> memo,
+			@RequestParam(required = false, defaultValue = "") List<String> memo,
 			Model model) {
 
 		List<Exercise_records> records = new ArrayList<>();
@@ -132,11 +132,13 @@ public class TaskController {
 
 			records.add(record);
 		}
+		List<Events> events = eventsRepository.findByUserIdOrderByIdAsc(account.getId());
+
 		model.addAttribute("totalBurnCalorie",
 				Math.round(totalBurnCalorie * 10.0) / 10.0);
 
 		model.addAttribute("records", records);
-
+		model.addAttribute("events", events);
 		return "output";
 	}
 
@@ -214,12 +216,12 @@ public class TaskController {
 			@RequestParam Integer age,
 			Model model) {
 
-		double bmr;
+		Integer bmr;
 		if (sex.equals("m")) {
-			bmr = 13.397 * weight + 4.79 * height - 5.677 * age + 88.362;
+			bmr = (int) (13.397 * weight + 4.79 * height - 5.677 * age + 88.362);
 
 		} else {
-			bmr = 9.247 * weight + 3.098 * height - 4.33 * age + 447.593;
+			bmr = (int) (9.247 * weight + 3.098 * height - 4.33 * age + 447.593);
 		}
 		model.addAttribute("bmr", bmr);
 

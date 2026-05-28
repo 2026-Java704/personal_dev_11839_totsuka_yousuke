@@ -12,10 +12,10 @@
 		ログイン
 	</h1>
 
-	<form action="/login" method="post">
+	<form action="/login" method="post" 　>
 		<span th:text="${message}" style="color: red"></span><br>
-		<input type="text" name="name" size="30" placeholder="名前"><br>
-		<input type="text" name="password" size="30" placeholder="パスワード"><br>
+		<input type="text" name="name" size="30" placeholder="名前" required><br>
+		<input type="password" name="password" size="30" placeholder="パスワード" 　autocomplete="off" required><br>
 		<button>ログイン</button>
 	</form>
 	<a href="/users/new" method="get">新規登録</a>

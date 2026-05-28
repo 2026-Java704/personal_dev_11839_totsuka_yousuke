@@ -16,13 +16,9 @@
 	<main>
 		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
 
-
-		<button onclick="add()">行追加</button>
-		<button onclick="del()">行削除</button>
-
 		<form action="/records/add" method="post">
 
-
+			<button>ENTER!!!</button>
 			<table id="tbl" border="1">
 				<!--			<table border="1">-->
 				<tr>
@@ -43,13 +39,13 @@
 					</td>
 					<td><input type="number" name="time" min="1" required> 分</td>
 					<td><input type="number" name="weight" min="1" step="0.1" required> kg</td>
-					<td><input type="text" name="memo"></td>
+					<td><input type="text" name="memo" required></td>
 				</tr>
 			</table>
-
-			<button>ENTER!!!</button>
-
 		</form>
+
+		<button onclick="add()">行追加</button>
+		<button onclick="del()">行削除</button>
 
 		<br>
 		<p><a href="/past">過去の記録を見る</a></p>

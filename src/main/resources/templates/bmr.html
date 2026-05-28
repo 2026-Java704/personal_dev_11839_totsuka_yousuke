@@ -12,7 +12,7 @@
 	<hr>
 
 	<h1>基礎代謝の計算</h1>
-	
+
 	<p></p>
 	<span th:text="${message}" style="color: red"></span><br>
 	<form action="/bmr/result" method="post">
@@ -27,9 +27,9 @@
 				<td><input type="radio" name="sex" value="m" checked>男性
 					<input type="radio" name="sex" value="ｆ">女性
 				</td>
-				<td><input type="number" name="weight" placeholder="体重">kg</td>
-				<td><input type="number" name="height" placeholder="身長">cm</td>
-				<td><input type="number" name="age" placeholder="年齢">歳</td>
+				<td><input type="number" name="weight" placeholder="体重" required>kg</td>
+				<td><input type="number" name="height" placeholder="身長" required>cm</td>
+				<td><input type="number" name="age" placeholder="年齢" required>歳</td>
 			</tr>
 		</table>
 		<button>計算</button>
